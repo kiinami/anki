@@ -3,15 +3,13 @@
 <div id="card-back">
     <div id="container" class="flex-container">
         <div id="meanings" class="meanings">
-            <h2>Meanings</h2>
-            <p id="definitons" class="definitions"></p>
+            <p id="definitions"></p>
         </div>
         <div id="context" class="context">
             <div id="context-img" class="context-img">{{Picture}}</div>
             <div id="context-sentence" class="japanese">{{Sentence}}</div>
         </div>
         <div id="readings" class="readings">
-            <h2>Readings</h2>
             <div id="graph"> {{Graph}}</div>
             <div id="reading" class="japanese">{{Reading}}</div>
         </div>
@@ -79,5 +77,5 @@
   for (var me of meanings) {
     meanings_html += `<p>${titleCase(me)}</p>`;
   }
-  document.getElementById("definitons").innerHTML = meanings_html;
+  document.getElementById("definitions").innerHTML = meanings_html;
 </script>
