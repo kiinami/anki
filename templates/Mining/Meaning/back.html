@@ -38,14 +38,11 @@
 
     typedAnswerLower = typedAnswer.toLowerCase();
 
-    var meaningWhitelist = `{{Meaning}}`.toLowerCase().split(" | ");
-    var readingWhitelist = `{{Reading}}`.toLowerCase().split(", ");
-
     var correctAnswers = [];
     if (`{{Card}}` === "Meaning") {
-      correctAnswers = meaningWhitelist;
+      correctAnswers = `{{Meaning}}`.toLowerCase().split(" | ");
     } else if (`{{Card}}` === "Reading") {
-      correctAnswers = readingWhitelist;
+      correctAnswers = `{{Reading}}`.toLowerCase().split(", ");
     }
 
     var answerDiv = document.createElement("div");
