@@ -72,14 +72,3 @@
     }
   }
 </script>
-
-<!-- Fixes the heights of the elements -->
-<script>
-  var context_height = document.getElementById("context").clientHeight;
-
-  for(var el of [document.getElementById("meanings"), document.getElementById("reading")]) {
-    if (el.clientHeight < context_height) {
-      el.style.height = context_height + "px";
-    }
-  }
-</script>

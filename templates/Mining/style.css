@@ -20,16 +20,11 @@
 
     --font-color-light: white;
 
-    --border-color: darkgray;
-
     --meaning-color: #017ab7;
-    --reading-color: #007f06;
+    --reading-color: #1a535c;
 
-    --vocab-color: #9e00ed;
-    --vocab-color-dark: #7600b1;
-
-    --incorrect-color: #c10707;
-    --correct-color: #007f06;
+    --incorrect-color: #ff6b6b;
+    --correct-color: #62c370;
 }
 
 .card {
@@ -58,7 +53,7 @@
 /* front of card */
 
 .quest {
-    margin: 30px;
+    margin: 30px 50px 20px;
     position: relative;
     display: grid;
     font-family: "Hiragino";
@@ -124,12 +119,12 @@
 
 .flex-container > div {
     flex: 1;
-    margin: 1em;
-    padding: 1.5em;
+    margin: 20px;
+    padding: 30px;
     border-radius: 25px;
     box-shadow: #191919 0px 0px 10px;
     background: var(--background-color-grey);
-    align-self: center;
+    align-self: stretch;
 }
 
 .meanings {
