@@ -1,32 +1,10 @@
-<div id="card-front">
-    <div id="quest" class="quest">
-        <div id="quest-word" class="quest-word">{{Word}}</div>
-        <div id="quest-type"  class="quest-type"><b>{{Card}}</b></div>
-        <div id="quest-input" class="quest-input">{{type:Do_Not_Modify}}</div>
-    </div>
-
-    <script>
-      // Depending on the card type, adds one style or the other
-      var questWordDiv = document.getElementById("quest");
-      if ("{{Card}}" === "Meaning") {
-        questWordDiv.classList.add("quest-meaning");
-      } else if ("{{Card}}" === "Reading") {
-        questWordDiv.classList.add("quest-reading");
-      }
-
-      // Adds a placeholder when nothing is written in the type-in field
-      var answerDiv = document.getElementById("typeans");
-      if (answerDiv !== null) {
-        answerDiv.setAttribute("placeholder", "Your Response");
-      }
-    </script>
-</div>
+{{FrontSide}}
 
 <div id="card-back">
     <div id="container" class="flex-container">
         <div id="meanings" class="meanings">
             <h2>Meanings</h2>
-            <p id="definitons">{{Meaning}}</p>
+            <p id="definitons" class="definitions"></p>
         </div>
         <div id="context" class="context">
             <div id="context-img" class="context-img">{{Picture}}</div>
@@ -38,8 +16,10 @@
             <div id="reading" class="japanese">{{Reading}}</div>
         </div>
     </div>
-    <div id="reading-audio" class="hidden">{{Audio}}</div>
-    <div id="sentence-audio" class="hidden">{{SentenceAudio}}</div>
+    <div id="audio-container" class="flex-container">
+        <div id="reading-audio" class="hidden">{{Audio}}</div>
+        <div id="sentence-audio" class="hidden">{{SentenceAudio}}</div>
+    </div>
 </div>
 
 <!-- Check the answer -->
@@ -51,8 +31,8 @@
     if (typedAnswer_element.querySelector(".typegiven")) {
       // the "typegiven" class exists only on iphone:
       typedAnswer = typedAnswer_element
-        .querySelector(".typegiven")
-        .querySelector(".typeBad").innerText;
+          .querySelector(".typegiven")
+          .querySelector(".typeBad").innerText;
     } else if (typedAnswer_element.querySelector(".typeBad")) {
       //for pc and android:
       typedAnswer = typedAnswer_element.querySelector(".typeBad").innerText;
@@ -60,19 +40,14 @@
 
     typedAnswerLower = typedAnswer.toLowerCase();
 
-    var meaningWhitelist = `{{Meaning_Whitelist}}`.toLowerCase().split(" | ");
-    var meaningBlacklist = `{{Meaning_Blacklist}}`.toLowerCase().split(" | ");
-    var readingWhitelist = `{{Reading_Whitelist}}`.toLowerCase().split(", ");
-    var readingBlacklist = `{{Reading_Blacklist}}`.toLowerCase().split(", ");
+    var meaningWhitelist = `{{Meaning}}`.toLowerCase().split(" | ");
+    var readingWhitelist = `{{Reading}}`.toLowerCase().split(", ");
 
     var correctAnswers = [];
-    var incorrectAnswers = [];
     if (`{{Card}}` === "Meaning") {
       correctAnswers = meaningWhitelist;
-      incorrectAnswers = meaningBlacklist;
     } else if (`{{Card}}` === "Reading") {
       correctAnswers = readingWhitelist;
-      incorrectAnswers = readingBlacklist;
     }
 
     var answerDiv = document.createElement("div");
@@ -83,12 +58,26 @@
     if (typedAnswerLower === "") {
       answerDiv.style.display = "none";
       document.getElementById("quest").classList.add("empty");
-    } else if (incorrectAnswers.includes(typedAnswerLower)) {
-      answerDiv.classList.add("incorrect");
     } else if (correctAnswers.includes(typedAnswerLower)) {
       answerDiv.classList.add("correct");
     } else {
       answerDiv.classList.add("incorrect");
     }
   }
+</script>
+
+<!-- Insert meanings -->
+<script>
+  function titleCase(str) {
+    return str.toLowerCase().split(' ').map(function(word) {
+      return word.replace(word[0], word[0].toUpperCase());
+    }).join(' ');
+  }
+
+  var meanings = `{{Meaning}}`.split(" | ");
+  var meanings_html = "";
+  for (var me of meanings) {
+    meanings_html += `<p>${titleCase(me)}</p>`;
+  }
+  document.getElementById("definitons").innerHTML = meanings_html;
 </script>
