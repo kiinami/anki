@@ -3,15 +3,14 @@
 <div id="card-back">
     <div id="container" class="flex-container">
         <div id="meanings" class="meanings">
-            <p id="definitions"></p>
         </div>
         <div id="context" class="context">
             <div id="context-img" class="context-img">{{Picture}}</div>
-            <div id="context-sentence" class="japanese">{{Sentence}}</div>
+            <div id="context-sentence" class="context-sentence">{{Sentence}}</div>
         </div>
-        <div id="readings" class="readings">
-            <div id="graph"> {{Graph}}</div>
-            <div id="reading" class="japanese">{{Reading}}</div>
+        <div id="reading" class="reading">
+            <div id="reading-graph"> {{Graph}}</div>
+            <div id="reading-hiragana" class="reading-hiragana">{{Reading}}</div>
         </div>
     </div>
     <div id="audio-container" class="flex-container">
@@ -19,6 +18,19 @@
         <div id="sentence-audio" class="hidden">{{SentenceAudio}}</div>
     </div>
 </div>
+
+<!-- Insert meanings -->
+<script>
+  var meanings = `{{Meaning}}`.split(" | ");
+  var meanings_html = "";
+  for (var me of meanings) {
+    if (me !== meanings[0]) {
+      meanings_html += "<br>";
+    }
+    meanings_html += `${me}`;
+  }
+  document.getElementById("meanings").innerHTML = meanings_html;
+</script>
 
 <!-- Check the answer -->
 <script>
@@ -61,18 +73,13 @@
   }
 </script>
 
-<!-- Insert meanings -->
+<!-- Fixes the heights of the elements -->
 <script>
-  function titleCase(str) {
-    return str.toLowerCase().split(' ').map(function(word) {
-      return word.replace(word[0], word[0].toUpperCase());
-    }).join(' ');
-  }
+  var context_height = document.getElementById("context").clientHeight;
 
-  var meanings = `{{Meaning}}`.split(" | ");
-  var meanings_html = "";
-  for (var me of meanings) {
-    meanings_html += `<p>${titleCase(me)}</p>`;
+  for(var el of [document.getElementById("meanings"), document.getElementById("reading")]) {
+    if (el.clientHeight < context_height) {
+      el.style.height = context_height + "px";
+    }
   }
-  document.getElementById("definitions").innerHTML = meanings_html;
 </script>

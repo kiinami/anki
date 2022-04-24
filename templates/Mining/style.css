@@ -74,18 +74,6 @@
     grid-row-start: 1;
 }
 
-.quest-type {
-    grid-column-start: 1;
-    grid-row-start: 1;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-    padding: 1em;
-    font-family: "Fira Code", Courier, monospace;
-    overflow-wrap: break-word;
-    font-size: 20px;
-    text-transform: uppercase;
-}
-
 .quest-meaning {
     background-color: var(--meaning-color) !important;
 }
@@ -127,14 +115,6 @@
     border-bottom-right-radius: 25px;
 }
 
-.japanese {
-    font-family: "Hiragino";
-    font-size: 20px;
-    text-align: center;
-    color: var(--font-color-light);
-    margin: 0.5em;
-}
-
 .flex-container {
     display: flex;
     justify-content: space-around;
@@ -145,16 +125,25 @@
 .flex-container > div {
     flex: 1;
     margin: 1em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    padding-bottom: 0.5em;
+    padding: 1.5em;
     border-radius: 25px;
     box-shadow: #191919 0px 0px 10px;
     background: var(--background-color-grey);
+    align-self: center;
 }
 
-#definitions p {
+.meanings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    align-items: center;
+    overflow-wrap: anywhere;
+    text-transform: capitalize;
     text-align: center;
+    line-height: 2em;
+    font-size: 25px;
+    font-family: "Noto", arial, sans-serif;
 }
 
 .context {
@@ -164,6 +153,30 @@
 
 .context-img {
     text-align: center;
+}
+
+.context-sentence {
+    font-family: "Hiragino";
+    font-size: 20px;
+    text-align: center;
+    color: var(--font-color-light);
+    margin: 0.5em;
+}
+
+.reading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    align-items: center;
+    overflow-wrap: anywhere;
+}
+
+.reading-hiragana {
+    font-family: "Hiragino";
+    font-size: 40px;
+    text-align: center;
+    color: var(--font-color-light);
 }
 
 #context-img img {
