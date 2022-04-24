@@ -4,8 +4,8 @@
 import os
 
 JSON_INDENT = 4
-JSON_FILENAME = 'template.json'
-CSS_FILENAME = 'template.css'
+JSON_FILENAME = 'info.json'
+CSS_FILENAME = 'style.css'
 FRONT_FILENAME = 'front.html'
 BACK_FILENAME = 'back.html'
 README_FILENAME = 'README.md'
