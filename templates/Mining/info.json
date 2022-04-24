@@ -1,0 +1,22 @@
+{
+    "modelName": "Mining",
+    "inOrderFields": [
+        "Word",
+        "Meaning",
+        "Meaning_Whitelist",
+        "Meaning_Blacklist",
+        "Reading",
+        "Reading_Whitelist",
+        "Reading_Blacklist",
+        "Audio",
+        "Graph",
+        "Sentence",
+        "SentenceAudio",
+        "Picture",
+        "Do_Not_Modify"
+    ],
+    "cardTemplates": [
+        "Meaning",
+        "Reading"
+    ]
+}

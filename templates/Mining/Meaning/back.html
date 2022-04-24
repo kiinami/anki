@@ -1,0 +1,94 @@
+<div id="card-front">
+    <div id="quest" class="quest">
+        <div id="quest-word" class="quest-word">{{Word}}</div>
+        <div id="quest-type"  class="quest-type"><b>{{Card}}</b></div>
+        <div id="quest-input" class="quest-input">{{type:Do_Not_Modify}}</div>
+    </div>
+
+    <script>
+      // Depending on the card type, adds one style or the other
+      var questWordDiv = document.getElementById("quest");
+      if ("{{Card}}" === "Meaning") {
+        questWordDiv.classList.add("quest-meaning");
+      } else if ("{{Card}}" === "Reading") {
+        questWordDiv.classList.add("quest-reading");
+      }
+
+      // Adds a placeholder when nothing is written in the type-in field
+      var answerDiv = document.getElementById("typeans");
+      if (answerDiv !== null) {
+        answerDiv.setAttribute("placeholder", "Your Response");
+      }
+    </script>
+</div>
+
+<div id="card-back">
+    <div id="container" class="flex-container">
+        <div id="meanings" class="meanings">
+            <h2>Meanings</h2>
+            <p id="definitons">{{Meaning}}</p>
+        </div>
+        <div id="context" class="context">
+            <div id="context-img" class="context-img">{{Picture}}</div>
+            <div id="context-sentence" class="japanese">{{Sentence}}</div>
+        </div>
+        <div id="readings" class="readings">
+            <h2>Readings</h2>
+            <div id="graph"> {{Graph}}</div>
+            <div id="reading" class="japanese">{{Reading}}</div>
+        </div>
+    </div>
+    <div id="reading-audio" class="hidden">{{Audio}}</div>
+    <div id="sentence-audio" class="hidden">{{SentenceAudio}}</div>
+</div>
+
+<!-- Check the answer -->
+<script>
+  //some addons read the script too early:
+  if (document.getElementById("typeans")) {
+    var typedAnswer = "";
+    var typedAnswer_element = document.getElementById("typeans");
+    if (typedAnswer_element.querySelector(".typegiven")) {
+      // the "typegiven" class exists only on iphone:
+      typedAnswer = typedAnswer_element
+        .querySelector(".typegiven")
+        .querySelector(".typeBad").innerText;
+    } else if (typedAnswer_element.querySelector(".typeBad")) {
+      //for pc and android:
+      typedAnswer = typedAnswer_element.querySelector(".typeBad").innerText;
+    }
+
+    typedAnswerLower = typedAnswer.toLowerCase();
+
+    var meaningWhitelist = `{{Meaning_Whitelist}}`.toLowerCase().split(" | ");
+    var meaningBlacklist = `{{Meaning_Blacklist}}`.toLowerCase().split(" | ");
+    var readingWhitelist = `{{Reading_Whitelist}}`.toLowerCase().split(", ");
+    var readingBlacklist = `{{Reading_Blacklist}}`.toLowerCase().split(", ");
+
+    var correctAnswers = [];
+    var incorrectAnswers = [];
+    if (`{{Card}}` === "Meaning") {
+      correctAnswers = meaningWhitelist;
+      incorrectAnswers = meaningBlacklist;
+    } else if (`{{Card}}` === "Reading") {
+      correctAnswers = readingWhitelist;
+      incorrectAnswers = readingBlacklist;
+    }
+
+    var answerDiv = document.createElement("div");
+    answerDiv.setAttribute("id", "typeans");
+    answerDiv.innerHTML = typedAnswer;
+    document.getElementById("typeans").replaceWith(answerDiv);
+
+    if (typedAnswerLower === "") {
+      answerDiv.style.display = "none";
+      document.getElementById("quest").classList.add("empty");
+    } else if (incorrectAnswers.includes(typedAnswerLower)) {
+      answerDiv.classList.add("incorrect");
+    } else if (correctAnswers.includes(typedAnswerLower)) {
+      answerDiv.classList.add("correct");
+    } else {
+      answerDiv.classList.add("incorrect");
+    }
+  }
+</script>
