@@ -33,6 +33,8 @@
 
   --incorrect-color: #c10707;
   --correct-color: #219906;
+
+  --background-color-typeans: #2f2f31;
 }
 
 .card {
@@ -107,7 +109,8 @@ vocabulary,
   border: 0;
   outline-style: none;
   font-family: arial;
-  margin: 5px;
+  margin: 5px;  background-color: var(--background-color-typeans);
+  color: var(--font-color-light);
 }
 
 /* back of card */
