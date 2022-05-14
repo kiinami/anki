@@ -20,7 +20,7 @@
 
 :root {
   --background-color-light: #ededed;
-  --background-color-dark: #dfdfdf;
+  --background-color-dark: #2f2f31;
 
   --font-color-dark: #444444;
   --font-color-light: white;
@@ -103,6 +103,8 @@ vocabulary,
   outline-style: none;
   font-family: arial;
   margin: 5px;
+  background-color: var(--background-color-dark);
+  color: var(--font-color-light);
 }
 
 /* back of card */

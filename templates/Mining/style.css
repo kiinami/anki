@@ -91,6 +91,8 @@
     border-bottom-right-radius: 25px;
     box-shadow: #191919 0px 0px 10px;
     clip-path: inset(0px -15px -15px -15px);
+    background-color: var(--background-color-grey);
+    color: var(--font-color-light);
 }
 
 /* back of card */
