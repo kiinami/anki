@@ -9,7 +9,7 @@
             <div id="context-sentence" class="context-sentence">{{Sentence}}</div>
         </div>
         <div id="reading" class="reading">
-            <div id="reading-graph"> {{Graph}}</div>
+            <div id="reading-graph"></div>
             <div id="reading-hiragana" class="reading-hiragana">{{Reading}}</div>
         </div>
     </div>
@@ -30,6 +30,20 @@
     meanings_html += `${me}`;
   }
   document.getElementById("meanings").innerHTML = meanings_html;
+</script>
+
+<!-- Insert graphs -->
+<script>
+  var graphs = `{{Graph}}`.split("</svg>");
+  var graphs_html = "";
+  for (var g of graphs) {
+    if (g !== graphs[0]) {
+      graphs_html += "<br>";
+    }
+    graphs_html += `${g}`;
+    graphs_html += `</svg>`
+  }
+  document.getElementById("reading-graph").innerHTML = graphs_html;
 </script>
 
 <!-- Check the answer -->
