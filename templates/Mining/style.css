@@ -59,9 +59,9 @@
     font-family: "Hiragino";
     font-size: 150px;
     color: var(--font-color-light);
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+    border-radius: 25px;
     box-shadow: #191919 0px 0px 10px;
+    background-color: var(--meaning-color) !important;
 }
 
 .quest-word {
@@ -69,43 +69,7 @@
     grid-row-start: 1;
 }
 
-.quest-meaning {
-    background-color: var(--meaning-color) !important;
-}
-
-.quest-reading {
-    background-color: var(--reading-color) !important;
-}
-
-#typeans {
-    line-height: 50px;
-    text-align: center;
-    position: absolute;
-    left: 0;
-    right: auto;
-    height: 50px;
-    border: 0;
-    outline-style: none;
-    font-family: arial;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    box-shadow: #191919 0px 0px 10px;
-    clip-path: inset(0px -15px -15px -15px);
-    background-color: var(--background-color-grey);
-    color: var(--font-color-light);
-}
-
 /* back of card */
-
-.correct {
-    background: var(--correct-color) !important;
-    color: var(--font-color-light);
-}
-
-.incorrect {
-    background: var(--incorrect-color) !important;
-    color: var(--font-color-light);
-}
 
 .empty {
     border-bottom-left-radius: 25px;
