@@ -1,0 +1,12 @@
+{
+    "modelName": "Migaku Kanji Production",
+    "inOrderFields": [
+        "Character",
+        "UserData",
+        "MigakuData",
+        "StrokeOrder"
+    ],
+    "cardTemplates": [
+        "Standard"
+    ]
+}

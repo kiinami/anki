@@ -1,0 +1,12 @@
+{
+    "modelName": "Migaku Kanji Recognition",
+    "inOrderFields": [
+        "Character",
+        "UserData",
+        "MigakuData",
+        "StrokeOrder"
+    ],
+    "cardTemplates": [
+        "Standard"
+    ]
+}
